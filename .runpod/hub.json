@@ -1,0 +1,79 @@
+{
+    "title": "GLM-OCR",
+    "description": "Purpose-built OCR model for document and table extraction using zai-org/GLM-OCR on vLLM",
+    "type": "serverless",
+    "category": "image",
+    "config": {
+      "runsOn": "GPU",
+      "containerDiskInGb": 20,
+      "presets": [
+        {
+          "name": "Default",
+          "defaults": {
+            "MODEL_NAME": "zai-org/GLM-OCR",
+            "MAX_MODEL_LEN": "16384",
+            "GPU_MEMORY_UTILIZATION": "0.95",
+            "MAX_IMAGE_SIDE": "2000",
+            "USE_GLMOCR_SDK": "1",
+            "ENFORCE_EAGER": "0"
+          }
+        }
+      ],
+      "env": [
+        {
+          "key": "MODEL_NAME",
+          "input": {
+            "name": "Model Name",
+            "type": "string",
+            "description": "HuggingFace model to load",
+            "default": "zai-org/GLM-OCR"
+          }
+        },
+        {
+          "key": "MAX_MODEL_LEN",
+          "input": {
+            "name": "Max Model Length",
+            "type": "string",
+            "description": "Context window size in tokens",
+            "default": "16384"
+          }
+        },
+        {
+          "key": "GPU_MEMORY_UTILIZATION",
+          "input": {
+            "name": "GPU Memory Utilization",
+            "type": "string",
+            "description": "Fraction of GPU memory to use (0.0-1.0)",
+            "default": "0.95"
+          }
+        },
+        {
+          "key": "MAX_IMAGE_SIDE",
+          "input": {
+            "name": "Max Image Side",
+            "type": "string",
+            "description": "Max pixel size of longest image side before resizing",
+            "default": "2000"
+          }
+        },
+        {
+          "key": "USE_GLMOCR_SDK",
+          "input": {
+            "name": "Use GLM-OCR SDK",
+            "type": "string",
+            "description": "Use native GLM-OCR SDK parser (1=enabled)",
+            "default": "1"
+          }
+        },
+        {
+          "key": "ENFORCE_EAGER",
+          "input": {
+            "name": "Enforce Eager",
+            "type": "string",
+            "description": "Disable CUDA graph optimization (set 1 if OOM)",
+            "default": "0"
+          }
+        }
+      ]
+    }
+  }
