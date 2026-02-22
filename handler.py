@@ -500,8 +500,9 @@ def handler(job):
         raise
 
 
-vllm_process = start_vllm()
-wait_for_vllm()
-OCR_PARSER = init_glmocr_sdk()
-runpod.serverless.start({"handler": handler})
+if __name__ == "__main__":
+    vllm_process = start_vllm()
+    wait_for_vllm()
+    OCR_PARSER = init_glmocr_sdk()
+    runpod.serverless.start({"handler": handler})
 
