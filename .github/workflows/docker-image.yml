@@ -5,10 +5,11 @@ on:
     branches: [main]
 
 jobs:
- env:
-      BUILDKIT_PROGRESS: plain
+
   build-and-push:
     runs-on: ubuntu-latest
+    env:
+      BUILDKIT_PROGRESS: plain
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
