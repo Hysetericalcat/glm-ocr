@@ -6,8 +6,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends git \
 
 # Install newer Transformers so GLM-OCR is recognized, plus RunPod SDK
 RUN pip uninstall -y transformers || true \
- && pip install -U git+https://github.com/huggingface/transformers.git \
- && pip install -U git+https://github.com/zai-org/glm-ocr.git \
+ && pip install "transformers>=5.3.0" \
+ && pip install glmocr \
  && pip install runpod requests pillow
 
 # Pre-download model weights into the image so cold starts don't hit HuggingFace
